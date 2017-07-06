@@ -1,0 +1,1 @@
+moudle.exports = require('./configureStore.dev')
