@@ -14,7 +14,9 @@ class IssueContainer extends React.Component {
         <button onClick={() => this.props.fetchIssues()}>get Issues</button>
         <IssueList>
           {issues.map((issue) =>
-            <Issue issue={issue}/>
+            <Issue
+              key={issue.id}
+              issue={issue}/>
           )}
         </IssueList>
       </div>

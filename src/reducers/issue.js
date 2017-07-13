@@ -1,10 +1,10 @@
-import { FETCH_ISSUE } from '../constants/action-type'
+import { RECEIVE_ISSUES } from '../constants/action-type'
 
 export default function issue (state = [], action) {
   console.log('action', action)
   switch (action.type) {
-    case FETCH_ISSUE:
-      state = action.issues
+    case RECEIVE_ISSUES:
+      state = action.issues.data.repository.issues.edges
       console.log('state', state)
       return state
     default:

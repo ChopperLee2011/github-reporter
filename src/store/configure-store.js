@@ -1,11 +1,22 @@
-import { createStore, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import { createLogger } from 'redux-logger'
 import rootReducer from '../reducers'
 
-// enable redux devtools... can this be done with Webpack instead?
-const enhancers = compose(
-  window.devToolsExtension ? window.devToolsExtension() : f => f
-)
+export default function configureStore (initialState) {
+  const store = createStore(
+    rootReducer,
+    initialState,
+    applyMiddleware(thunkMiddleware, createLogger())
+  )
 
-export default (initialState) => {
-  return createStore(rootReducer, initialState, enhancers);
-};
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept('../reducers', () => {
+      const nextRootReducer = require('../reducers').default
+      store.replaceReducer(nextRootReducer)
+    })
+  }
+
+  return store
+}

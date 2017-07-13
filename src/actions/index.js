@@ -1,20 +1,27 @@
 import * as types from '../constants/action-type'
 import github from '../api/github'
 
-export function fetchIssues () {
-  const issues = github.getIssues()
+function requestIssues () {
   return {
-    type: types.FETCH_ISSUE,
+    type: types.REQUEST_ISSUES
+  }
+}
+function receiveIssues (issues) {
+  console.log('issues', issues)
+  return {
+    type: types.RECEIVE_ISSUES,
     issues
   }
-  // return dispatch => {
-  // github.getIssues(issues => {
-  //   dispatch(() => {
-  //     return {
-  //       type: types.FETCH_ISSUE,
-  //       issues
-  //     }
-  //   })
-  // })
+}
+export function fetchIssues () {
+  // const issues = github.getIssues()
+  // return {
+  //   type: types.FETCH_ISSUE,
+  //   issues
   // }
+  return dispatch => {
+    dispatch(requestIssues())
+    return github.getIssues()
+      .then(issues => dispatch(receiveIssues(issues)))
+  }
 }

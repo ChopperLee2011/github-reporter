@@ -5,7 +5,7 @@ export default class Issue extends React.Component {
     const {issue} = this.props
     return (
       <div>
-        <li>{issue.name}</li>
+        <li>{issue.node.title}</li>
       </div>
     )
   }

@@ -1,0 +1,29 @@
+{
+    repository(owner: "ChopperLee2011", name: "test-repo") {
+        issues(first: 10) {
+            edges {
+                node {
+                    createdAt
+                    id
+                    title
+                    assignees(first: 10) {
+                        edges {
+                            node {
+                                id
+                                name
+                            }
+                        }
+                    }
+                    labels(first: 10) {
+                        edges {
+                            node {
+                                id
+                                name
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
