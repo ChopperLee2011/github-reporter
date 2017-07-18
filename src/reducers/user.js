@@ -1,14 +1,15 @@
-import { authStatereducer } from 'redux-auth'
-import { combineReducers } from 'redux'
+import { SIGNIN_USER } from '../constants/action-type'
 
-function user (state = [], action) {
+export default function user (state = [], action) {
   switch (action.type) {
+    case SIGNIN_USER:
+      state.user = action.user
+      return state
     default:
       return state
   }
 }
 
-export default combineReducers({
-  auth: authStatereducer,
-  user
-})
+export function signIn (state = []) {
+  return state
+}

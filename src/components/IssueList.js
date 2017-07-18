@@ -1,11 +1,10 @@
 import React from 'react'
+import { Panel } from 'react-bootstrap'
 
 export default class IssueList extends React.Component {
   render () {
     return (
-      <div>
-        <div>{this.props.children}</div>
-      </div>
+      <Panel header="Issues">{this.props.children}</Panel>
     )
   }
 }

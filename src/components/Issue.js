@@ -1,12 +1,11 @@
 import React from 'react'
+import { ListGroupItem } from 'react-bootstrap'
 
 export default class Issue extends React.Component {
   render () {
     const {issue} = this.props
     return (
-      <div>
-        <li>{issue.node.title}</li>
-      </div>
+      <ListGroupItem>{issue.node.title}</ListGroupItem>
     )
   }
 }

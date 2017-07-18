@@ -20,7 +20,7 @@ global.fetch = fetch
 //   networkInterface
 // })
 
-const token = ''
+const token = '81b5bd3c2d5a0492d2d6a4a32fd4f4bf7c65f24a'
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
     uri: `https://api.github.com/graphql?access_token=${token}`
